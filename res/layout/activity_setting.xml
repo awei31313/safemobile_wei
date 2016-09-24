@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView 
+        style="@style/Title"
+        android:text="设置中心"
+        />
+     <!-- 将以下的相对布局,抽取到单独的一个类中去做管理,以后只需要在布局文件中添加此类,即可达到以下效果-->
+   <!--  <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp" >
+
+        <TextView
+            android:id="@+id/tv_setting_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自动更新设置"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_setting_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_setting_title"
+            android:text="自动更新已关闭"
+            android:textSize="12sp" />
+        
+        <CheckBox 
+            android:id="@+id/cb_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+        
+        <TextView 
+            android:layout_marginTop="7dp"
+            android:layout_below="@id/tv_setting_des"
+            android:layout_width="280dp"
+            android:layout_height="0.3dp"
+            android:background="#000"
+            />
+    </RelativeLayout> -->
+    <com.example.mobilesafe1.view.ItemSettingView
+        xmlns:mobilesafe1="http://schemas.android.com/apk/res/com.example.mobilesafe1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/isv_setting_update"
+        mobilesafe1:destitle="自动更新设置"
+	    mobilesafe1:desoff="自动更新已关闭"
+	    mobilesafe1:deson="自动更新已开启" >
+    </com.example.mobilesafe1.view.ItemSettingView>
+
+</LinearLayout>
