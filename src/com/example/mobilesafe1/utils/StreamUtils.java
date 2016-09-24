@@ -4,6 +4,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * @author Administrator
+ * 将读取流转换为字符串的工具类
+ */
 public class StreamUtils {
 
 	public static String streamToString(InputStream is) {
