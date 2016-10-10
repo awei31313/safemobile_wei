@@ -8,6 +8,10 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
 
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.example.mobilesafe1" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -18,12 +22,37 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- //获取准确GPS坐标的权限 -->
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> <!-- //允许模拟器模拟位置坐标的权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- //获取粗略坐标的权限(网络定位时使用) -->
+    <!-- 使用手机振动的权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 在窗体上挂在view的权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 去电广播监听的权限 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <!-- 拦截电话需要用到的权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <!-- 读取和写入通话记录的权限 -->
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <!-- 杀死后台进程的权限 -->
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <!-- 开启快捷方式的权限 -->
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <!-- 获取任务栈的权限 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
 
     <application
+        android:name="com.example.mobilesafe1.global.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner" />
+
         <activity
             android:name="com.example.mobilesafe1.activity.SplashActivity"
             android:label="@string/app_name" >
@@ -34,24 +63,39 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.mobilesafe1.activity.HomeActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.HOME" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-        <activity android:name="com.example.mobilesafe1.activity.SettingActivity" >
-        </activity>
-        <activity android:name="com.example.mobilesafe1.activity.SetupOverActivity" >
-        </activity>
-        <activity android:name="com.example.mobilesafe1.activity.Setup1Activity" >
-        </activity>
-        <activity android:name="com.example.mobilesafe1.activity.Setup2Activity" >
-        </activity>
-        <activity android:name="com.example.mobilesafe1.activity.Setup3Activity" >
-        </activity>
-        <activity android:name="com.example.mobilesafe1.activity.Setup4Activity" >
-        </activity>
-        <activity android:name="com.example.mobilesafe1.activity.ContactListActivity" >
-        </activity>
-        <activity android:name="com.example.mobilesafe1.activity.AToolActivity" >
-        </activity>
-        <activity android:name="com.example.mobilesafe1.activity.QueryAdressActivity" >
+        <activity android:name="com.example.mobilesafe1.activity.SettingActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.SetupOverActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.Setup1Activity" />
+        <activity android:name="com.example.mobilesafe1.activity.Setup2Activity" />
+        <activity android:name="com.example.mobilesafe1.activity.Setup3Activity" />
+        <activity android:name="com.example.mobilesafe1.activity.Setup4Activity" />
+        <activity android:name="com.example.mobilesafe1.activity.ContactListActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.AToolActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.QueryAdressActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.BlackNumberActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.AppManagerActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.ProcessManagerActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.ProcessSettingActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.CommonNumberActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.AppLockActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.AnitVirusActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.TrafficActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.BaseCacheClearActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.CacheClearActivity" />
+        <activity android:name="com.example.mobilesafe1.activity.SDCacheClearActivity" />
+        <activity
+            android:name="com.example.mobilesafe1.activity.EnterPsdActivity"
+            android:launchMode="singleInstance" />
+            <!-- android:excludeFromRecents="true" -->
+        <activity
+            android:name="com.example.mobilesafe1.activity.ToastLocationActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
 
         <receiver android:name="com.example.mobilesafe1.receiver.BootReceiver" >
@@ -64,7 +108,21 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-        <receiver 
+        <receiver android:name="com.example.mobilesafe1.receiver.KillProcessReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.KILL_BACKGROUND_PROCESS" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.example.mobilesafe1.receiver.MyAppWidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/process_widget_provider" />
+        </receiver>
+        <receiver
             android:name="com.example.mobilesafe1.receiver.AdminReceiver"
             android:description="@string/sample_device_admin_description"
             android:label="@string/sample_device_admin"
@@ -72,13 +130,18 @@
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin_sample" />
+
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
 
-        <service android:name="com.example.mobilesafe1.service.LocationService" >
-        </service>
+        <service android:name="com.example.mobilesafe1.service.LocationService" />
+        <service android:name="com.example.mobilesafe1.service.AddressService" />
+        <service android:name="com.example.mobilesafe1.service.BlackNumberService" />
+        <service android:name="com.example.mobilesafe1.service.LockScreenService" />
+        <service android:name="com.example.mobilesafe1.service.UpdateWidgetService" />
+        <service android:name="com.example.mobilesafe1.service.WatchDogService" />
     </application>
 
 </manifest>

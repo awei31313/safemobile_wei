@@ -64,12 +64,40 @@ public class HomeActivity extends Activity {
 				case 0:
 					showDialog();
 					break;
-					//高级工具
+				//手机黑名单
+				case 1:
+					Intent intent1 = new Intent(getApplicationContext(), BlackNumberActivity.class);
+					startActivity(intent1);
+					break;
+				//手机应用列表
+				case 2:
+					Intent intent2 = new Intent(getApplicationContext(), AppManagerActivity.class);
+					startActivity(intent2);
+					break;
+				//进程列表
+				case 3:
+					Intent intent3 = new Intent(getApplicationContext(), ProcessManagerActivity.class);
+					startActivity(intent3);
+					break;
+				//流量统计
+				case 4:
+					Intent intent4 = new Intent(getApplicationContext(), TrafficActivity.class);
+					startActivity(intent4);
+					break;
+				//跳转到手机杀毒
+				case 5:
+					startActivity(new Intent(getApplicationContext(), AnitVirusActivity.class));
+					break;
+				//缓存清理
+				case 6:
+					startActivity(new Intent(getApplicationContext(), BaseCacheClearActivity.class));
+					break;
+				//高级工具
 				case 7:
 					Intent intent7 = new Intent(getApplicationContext(), AToolActivity.class);
 					startActivity(intent7);
 					break;
-					//设置中心
+				//设置中心
 				case 8:
 					Intent intent8 = new Intent(getApplicationContext(), SettingActivity.class);
 					startActivity(intent8);

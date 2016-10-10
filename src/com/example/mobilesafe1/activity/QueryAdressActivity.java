@@ -4,8 +4,10 @@ import com.example.mobilesafe1.R;
 import com.example.mobilesafe1.engine.AddressDao;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -54,9 +56,16 @@ public class QueryAdressActivity extends Activity {
 					//查询是耗时操作,开启子线程
 					query(phone);
 				}else{
-					//抖动
+					//如果输入为空，则产生抖动效果
 					Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
 					et_query_address_phone.startAnimation(animation);
+					
+					//同时手机振动
+					Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+					//振动2秒
+					vibrator.vibrate(2000);
+					////规律震动(震动规则(不震动时间,震动时间,不震动时间,震动时间.......),重复次数)
+					vibrator.vibrate(new long[]{2000,2000,2000,2000}, -1);
 				}
 			}
 		});

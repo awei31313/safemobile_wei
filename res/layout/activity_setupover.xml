@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -21,7 +21,7 @@
             android:gravity="left"
             android:text="安全号码"
             android:textColor="#000"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_setup_number"
@@ -43,7 +43,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
 
@@ -54,7 +54,7 @@
             android:gravity="left"
             android:text="防盗保护是否开启"
             android:textColor="#000"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/iv_setupover_lock"
@@ -71,25 +71,22 @@
     </ImageView>
     
     <TextView 
+        android:layout_margin="8dp"
 	    android:id="@+id/tv_setup_reset"
 	    android:background="@drawable/selector_reset_setup_bg"
 	    android:text="重新进入设置向导"
-	    android:textSize="18sp"
+	    android:textSize="20sp"
 	    android:textColor="#f00"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"/>
     
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/listview_divider" >
-    </ImageView>
+    
     
 	<TextView 
 	    android:background="@android:color/darker_gray"
 	    android:text="功能简介"
-	    android:padding="5dp"
-	    android:textSize="20sp"
+	    android:padding="8dp"
+	    android:textSize="22sp"
 	    android:textColor="#000"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"/>
@@ -98,7 +95,7 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:textColor="#000"
-	    android:textSize="18sp"
+	    android:textSize="20sp"
 	    android:gravity="center_vertical"
 	    android:drawableLeft="@android:drawable/star_big_on"
 	    android:text="GPS追踪:#*location*#"/>
@@ -107,7 +104,7 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:textColor="#000"
-	    android:textSize="18sp"
+	    android:textSize="20sp"
 	    android:gravity="center_vertical"
 	    android:drawableLeft="@android:drawable/star_big_on"
 	    android:text="播放报警音乐:#*alarm*#"/>
@@ -117,7 +114,7 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:textColor="#000"
-	    android:textSize="18sp"
+	    android:textSize="20sp"
 	    android:gravity="center_vertical"
 	    android:drawableLeft="@android:drawable/star_big_on"
 	    android:text="数据销毁:#*wipedata*#"/>
@@ -126,7 +123,7 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:textColor="#000"
-	    android:textSize="18sp"
+	    android:textSize="20sp"
 	    android:gravity="center_vertical"
 	    android:drawableLeft="@android:drawable/star_big_on"
 	    android:text="远程锁屏:#*lockscreen*#"/>

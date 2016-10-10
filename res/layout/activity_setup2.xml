@@ -15,7 +15,7 @@
         android:text="通过绑定Sim卡:\n下次重启手机如果发现Sim卡变化就会发送报警短信"
         android:textColor="#000"
         android:textSize="18sp" />
-	<com.example.mobilesafe1.view.ItemSettingView 
+	<com.example.mobilesafe1.view.CheckboxView_Setting 
 	    xmlns:mobilesafe1="http://schemas.android.com/apk/res/com.example.mobilesafe1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
 	    mobilesafe1:desoff="Sim卡未绑定"
 	    mobilesafe1:deson="Sim卡已绑定">
 	    
-	</com.example.mobilesafe1.view.ItemSettingView>
+	</com.example.mobilesafe1.view.CheckboxView_Setting>
    
 
     <LinearLayout

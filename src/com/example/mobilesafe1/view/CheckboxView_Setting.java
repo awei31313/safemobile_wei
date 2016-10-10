@@ -9,7 +9,7 @@ import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class ItemSettingView extends RelativeLayout {
+public class CheckboxView_Setting extends RelativeLayout {
 
 	private static final String SPACENAME = "http://schemas.android.com/apk/res/com.example.mobilesafe1";
 	private TextView tv_setting_title;
@@ -19,18 +19,18 @@ public class ItemSettingView extends RelativeLayout {
 	private String mdesoff;
 	private String mdeson;
 
-	public ItemSettingView(Context context) {
+	public CheckboxView_Setting(Context context) {
 		this(context,null);
 	}
 
-	public ItemSettingView(Context context, AttributeSet attrs) {
+	public CheckboxView_Setting(Context context, AttributeSet attrs) {
 		this(context, attrs,0);
 	}
 
-	public ItemSettingView(Context context, AttributeSet attrs, int defStyleAttr) {
+	public CheckboxView_Setting(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		//xml--->view	将设置界面的一个条目转换成view对象,直接添加到了当前SettingItemView对应的view中
-		View.inflate(context, R.layout.item_activity_setting, this);
+		View.inflate(context, R.layout.checkbox_view_activity_setting, this);
 		//等同于以下两行代码
 		/*View view = View.inflate(context, R.layout.setting_item_view, null);
 		this.addView(view);*/

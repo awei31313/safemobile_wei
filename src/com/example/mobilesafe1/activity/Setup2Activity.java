@@ -4,7 +4,7 @@ import com.example.mobilesafe1.R;
 import com.example.mobilesafe1.utils.ConstantValue;
 import com.example.mobilesafe1.utils.SpUtil;
 import com.example.mobilesafe1.utils.ToastUtil;
-import com.example.mobilesafe1.view.ItemSettingView;
+import com.example.mobilesafe1.view.CheckboxView_Setting;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,7 +17,7 @@ import android.view.View.OnClickListener;
 
 public class Setup2Activity extends BaseSetupAcitivity {
 
-	private ItemSettingView isv_setup2_bound;
+	private CheckboxView_Setting isv_setup2_bound;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class Setup2Activity extends BaseSetupAcitivity {
 	}
 
 	private void initUI() {
-		isv_setup2_bound = (ItemSettingView) findViewById(R.id.isv_setup2_bound);
+		isv_setup2_bound = (CheckboxView_Setting) findViewById(R.id.isv_setup2_bound);
 		// 判断sp里是否存储sim卡号，并做控件的状态改变
 		String sim_number = SpUtil.getString(this, ConstantValue.SIM_NUMBER, null);
 		if (!TextUtils.isEmpty(sim_number)) {

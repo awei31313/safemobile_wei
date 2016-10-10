@@ -18,7 +18,7 @@ public abstract class BaseSetupAcitivity extends Activity {
 			@Override
 			public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 				// 监听手势的移动
-				if (e1.getX() - e2.getX() > 50) {
+				if (e1.getX() - e2.getX() > 150) {
 					// 调用子类的下一页方法,抽象方法
 
 					// 在第一个界面上的时候,跳转到第二个界面
@@ -27,7 +27,7 @@ public abstract class BaseSetupAcitivity extends Activity {
 					showNextPage();
 				}
 
-				if (e1.getX() - e2.getX() < 50) {
+				if (e1.getX() - e2.getX() < -150) {
 					// 调用子类的上一页方法
 					// 在第一个界面上的时候,无响应,空实现
 					// 在第二个界面上的时候,跳转到第1个界面

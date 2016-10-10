@@ -16,7 +16,7 @@
         android:marqueeRepeatLimit="marquee_forever"
         android:padding="5dp"
         android:singleLine="true"
-        android:text="秋天秋天悄悄过去,留下小秘密,啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊" />
+        android:text="欢迎使用黑马卫士~~~" />
     
     <GridView 
         android:layout_width="match_parent"

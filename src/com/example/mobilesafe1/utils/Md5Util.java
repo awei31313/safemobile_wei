@@ -8,6 +8,7 @@ public class Md5Util {
 
 	/**给指定字符串按照md5算法去加密
 	 * @param psd	需要加密的密码
+	 * @return   返回MD5加密后32位字符的字符串
 	 */
 	public static String encoder(String psd) {
 		try {

@@ -34,6 +34,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -88,7 +89,11 @@ public class SplashActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
-		
+//		//判断当前手机系统的SDK版本
+//		if(SpUtil.getInt(this, ConstantValue.SDK_VERSION, 0) == 0){
+//			int sdkVersion = android.os.Build.VERSION.SDK_INT;
+//			SpUtil.putInt(this, ConstantValue.SDK_VERSION, sdkVersion);
+//		}
 		//1,初始化UI
 		initUi();
 		//2,初始化数据
@@ -97,6 +102,33 @@ public class SplashActivity extends Activity {
 		initAnimation();
 		//4，初始化数据库
 		initDataBase();
+        if(!SpUtil.getBoolean(this, ConstantValue.HAS_SHORTCUT, false)){
+        	//生成快捷方式
+            initShortCut();
+        }
+	}
+	
+	/**
+	 * 生成快捷方式
+	 */
+	private void initShortCut() {
+		//1,给intent维护图标,名称
+		Intent intent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+		//维护图标
+		intent.putExtra(Intent.EXTRA_SHORTCUT_ICON, 
+				BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));
+		//名称
+		intent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "安全卫士");
+		//2,点击快捷方式后跳转到的activity
+		//2.1维护开启的意图对象
+		Intent shortCutIntent = new Intent("android.intent.action.HOME");
+		shortCutIntent.addCategory("android.intent.category.DEFAULT");
+		
+		intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortCutIntent);
+		//3,发送广播
+		sendBroadcast(intent);
+		//4,告知sp已经生成快捷方式
+		SpUtil.putBoolean(this, ConstantValue.HAS_SHORTCUT, true);
 	}
 
 	
@@ -105,7 +137,11 @@ public class SplashActivity extends Activity {
 	 */
 	private void initDataBase() {
 		//归属地数据库拷贝过程
-		initAdressDB("address.db");
+		initAddressDB("address.db");
+		//2,常用号码数据库拷贝过程
+		initAddressDB("commonnum.db");
+		//病毒库数据库拷贝
+		initAddressDB("antivirus.db");
 		
 	}
 
@@ -114,7 +150,7 @@ public class SplashActivity extends Activity {
 	 * 初始化归属地数据库
 	 * @param dbName	要初始化的数据库名称
 	 */
-	private void initAdressDB(String dbName) {
+	private void initAddressDB(String dbName) {
 
 		File file = getFilesDir();
 		file = new File(file,dbName);
